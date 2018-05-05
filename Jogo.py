@@ -1,6 +1,8 @@
 TAM_LIN = 6
 TAM_COL = 7
 
+from avaliação import *
+
 class bcolors:
     ROSA = '\033[95m'
     AZUL = '\033[94m'
@@ -39,7 +41,23 @@ class Jogo:
             self.vez *= -1
 
     def alguemGanhou(self):
-        onde_cont = 0
+        for i in range(6):
+            for j in range(7):
+                if(checaVertical(self.tabuleiro, 1, 4, i, j, 0) != 0):
+                    return 1
+                if (checaVertical(self.tabuleiro, -1, 4, i, j, 0) != 0):
+                    return -1
+
+                if (checaHorizontal(self.tabuleiro, 1, 4, i, j, 0) != 0):
+                    return 1
+                if (checaHorizontal(self.tabuleiro, -1, 4, i, j, 0) != 0):
+                    return -1
+
+                if (checaDiagonal(self.tabuleiro, 1, 4, i, j, 0) != 0):
+                    return 1
+                if (checaDiagonal(self.tabuleiro, -1, 4, i, j, 0) != 0):
+                    return -1
+        '''onde_cont = 0
         #Horizontal
         for i in range(TAM_LIN - 1,TAM_LIN - self.ondeLivre[onde_cont], -1):
             onde_cont += 1
@@ -79,7 +97,7 @@ class Jogo:
                     if total == 4:
                         return 1
                     if total == -4:
-                        return -1
+                        return -1'''
         return 0
 
     def cheio(self):

@@ -11,6 +11,8 @@ sys.setrecursionlimit(1500)
 
 def mainLoop():
     xogao = Jogo()
+    computador = IntArt()
+    computador.jogo_copia = xogao
 
     while(True):
         clear()
@@ -26,8 +28,6 @@ def mainLoop():
                 continue
 
         xogao.coloca_disco(entrada)
-        # computador = Int_Art(xogao)
-        computador = IntArt(xogao)
         xogao.coloca_disco(computador.buscaAlphaBeta())
 
         if xogao.alguemGanhou() != 0 or xogao.cheio():

@@ -7,9 +7,6 @@ PROFUNDIDADEM = 5
 class IntArt:
     jogo_copia = None
 
-    def __init__(self, jogo):
-        self.jogo_copia = jogo
-
     def max_retorno(self, contador, alfa, beta):
         if self.jogo_copia.alguemGanhou() != 0 or self.jogo_copia.cheio() or contador == PROFUNDIDADEM:
             return pontuacao(self.jogo_copia.tabuleiro)
