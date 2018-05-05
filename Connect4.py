@@ -9,15 +9,14 @@ clear = lambda: os.system('cls')
 
 sys.setrecursionlimit(1500)
 
+
 def mainLoop():
     xogao = Jogo()
     computador = IntArt()
     computador.jogo_copia = xogao
+    xogao.imprime()
 
-    while(True):
-        clear()
-        os.system('cls')
-        xogao.imprime()
+    while True:
         xogao.imprime_vez()
 
         entrada = int(input(bcolors.BOLD + bcolors.VERDE + "Sua vez: "))
@@ -28,7 +27,20 @@ def mainLoop():
                 continue
 
         xogao.coloca_disco(entrada)
+        clear()
+        os.system('cls')
+        xogao.imprime()
+
+        if xogao.alguemGanhou() != 0 or xogao.cheio():
+            xogao.imprime_vencedor()
+            break
+
+        xogao.imprime_vez()
+
         xogao.coloca_disco(computador.buscaAlphaBeta())
+        clear()
+        os.system('cls')
+        xogao.imprime()
 
         if xogao.alguemGanhou() != 0 or xogao.cheio():
             xogao.imprime_vencedor()

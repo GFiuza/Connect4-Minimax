@@ -130,13 +130,9 @@ class Jogo:
 
     def imprime_vencedor(self):
         if self.cheio():
-            self.tabuleiro = [[1,1,1,1,1,1,1],[1,1,1,1,1,1,1],[1,1,1,1,1,1,1],[1,1,1,1,1,1,1],[1,1,1,1,1,1,1],[1,1,1,1,1,1,1]]
+            print("\n" + bcolors.AMARELO + bcolors.BOLD + "!!! EMP" + bcolors.AZUL + bcolors.BOLD + "ATE !!!")
             return
         if self.alguemGanhou() == 1:
-            self.tabuleiro = [[1,1,1,1,1,1,1],[1,1,1,1,1,1,1],[1,1,1,1,1,1,1],[1,1,1,1,1,1,1],[1,1,1,1,1,1,1],[1,1,1,1,1,1,1]]
-            self.imprime()
             print("\n" + bcolors.AMARELO + bcolors.BOLD + "!!! JOGADOR 1 VENCEU !!!")
         if self.alguemGanhou() == -1:
-            self.tabuleiro = [[-1,-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1,-1]]
-            self.imprime()
             print("\n" + bcolors.AZUL + bcolors.BOLD + "!!! JOGADOR 2 VENCEU !!!")
