@@ -153,11 +153,3 @@ def checaQuantidade(tabuleiro, jogador, qtdPecas, printar):
             contador += checaHorizontal(tabuleiro,jogador,qtdPecas, i, j, printar)
             contador += checaDiagonal(tabuleiro,jogador,qtdPecas, i, j, printar)
     return contador
-
-def checaVitoria(tabuleiro):
-    i=-1
-    while(i<2):
-        if (checaQuantidade(tabuleiro, i, 4, 0) > 0):
-            return i
-        i += 2
-    return 0
