@@ -2,8 +2,8 @@ import os
 import sys
 from Jogo import Jogo
 from Jogo import bcolors
-# from minimax import Int_Art
 from minimax_poda import IntArt
+# from minimax import Int_Art
 
 clear = lambda: os.system('cls')
 
@@ -21,9 +21,9 @@ def mainLoop():
 
         entrada = int(input(bcolors.BOLD + bcolors.VERDE + "Sua vez: "))
 
-        while entrada > 7 or entrada < 0 or xogao.ondeLivre[entrada] < 0:
-            entrada = int(input(bcolors.BOLD + bcolors.VERMELHO + "Diga uma coluna válida"))
-            if xogao.ondeLivre[entrada] < 0:
+        while entrada > 6 or entrada < 0 or xogao.ondeLivre[entrada] < 0:
+            entrada = int(input(bcolors.BOLD + bcolors.VERMELHO + "Diga uma coluna válida: "))
+            if entrada <= 6 and entrada >= 0 and xogao.ondeLivre[entrada] < 0:
                 continue
 
         xogao.coloca_disco(entrada)
