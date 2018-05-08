@@ -77,19 +77,6 @@ def cutoff(ia, contador, eh_min):
     else:
         return False
 
-    if eh_min:  # Se estiver calculando o mínimo, ou seja, simulando a jogada do jogador
-        # Se a IA possir mais jogadas que o jogador, ativa o cutoff
-        if possibilidades_jogador < possibilidades_ia:
-            return True
-        else:
-            return False
-    else:  # Se estiver calculando o max, ou seja, simulando jogada da IA
-        # Se o jogador tiver mais possibilidades que a IA, ativa o cutoff
-        if possibilidades_jogador > possibilidades_ia:
-            return True
-        else:
-            return False
-
 # Retorna uma lista com os valores da diagonal de cima pra baixo (\)
 def diagonal_cima_baixo(jogo, i, j):
     resp = []
