@@ -1,22 +1,5 @@
 from avaliação import pontuacao
 
-# quant = 0
-# func = 0
-#
-#
-# def cutoff_quant():
-#     print("Quantidade de vezes que a função foi chamada =", func)
-#     print("Quantidade de cutoffs =", quant)
-#     print("Porcentagem =", quant/func)
-#
-#
-# def cutoff_quant_zera():
-#     global quant
-#     global func
-#     quant = 0
-#     func = 0
-#
-
 
 def cutoff(ia, contador, eh_min):       # Função de cutoff. Ele avalia as possíveis de 4 espaços no tabuleiro
     # global func                       # e avalia se o jogador tem chance de colocar 4 peças naquele lugar
@@ -42,7 +25,7 @@ def cutoff(ia, contador, eh_min):       # Função de cutoff. Ele avalia as poss
                 possibilidades_jogador += 3
 
     for j in range(len(jogo[0])):                           # Mesma coisa que a função de cima, mas agora com as
-        for i in range(0, len(jogo) - 4):                   # colunas. O algoritmo xtraisubcolunas, transformando-as
+        for i in range(0, len(jogo) - 4):                   # colunas. O algoritmo extraisubcolunas, transformando-as
                                                             # em um vetor de quatro posições.
             temp = []
             for k in range(i, i+4):
