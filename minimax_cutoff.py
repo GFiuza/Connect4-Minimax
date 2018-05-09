@@ -1,7 +1,7 @@
 import copy
 from Jogo import *
 from avaliação import *
-from cutoff import cutoff, cutoff_quant, cutoff_quant_zera
+from cutoff import cutoff  # , cutoff_quant, cutoff_quant_zera
 PROFUNDIDADEM = 5
 
 class Int_Art:
@@ -32,7 +32,7 @@ class Int_Art:
         return valor_no
 
     def minimax_retorno(self):
-        cutoff_quant_zera()
+        # cutoff_quant_zera()
         profundidade = 0
         melhor_jogada = 0
         valor_no = float('-inf')
@@ -47,6 +47,5 @@ class Int_Art:
                 melhor_jogada = i
                 valor_no = valor_filho
             self.jogo_copia.retira_disco(i)
-        #
-        cutoff_quant()
+        # cutoff_quant()
         return melhor_jogada
