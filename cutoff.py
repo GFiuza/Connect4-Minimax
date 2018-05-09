@@ -1,28 +1,29 @@
 from avaliação import pontuacao
 
-quant = 0
-func = 0
+# quant = 0
+# func = 0
+#
+#
+# def cutoff_quant():
+#     print("Quantidade de vezes que a função foi chamada =", func)
+#     print("Quantidade de cutoffs =", quant)
+#     print("Porcentagem =", quant/func)
+#
+#
+# def cutoff_quant_zera():
+#     global quant
+#     global func
+#     quant = 0
+#     func = 0
+#
 
 
-def cutoff_quant():
-    print("Quantidade de vezes que a função foi chamada =", func)
-    print("Quantidade de cutoffs =", quant)
-    if func > 0:
-        print("Porcentagem =", quant/func)
+def cutoff(ia, contador, eh_min):       # Função de cutoff. Ele avalia as possíveis de 4 espaços no tabuleiro
+    # global func                       # e avalia se o jogador tem chance de colocar 4 peças naquele lugar
+    # func += 1
 
-
-def cutoff_quant_zera():
-    global quant
-    global func
-    quant = 0
-    func = 0
-
-
-def cutoff(ia, contador, eh_min):
-    global func
-    func += 1
-    if contador < 2:
-        return False
+    if contador < 2:                    # A função só funciona para profundidades a partir de 2
+        return False                    # senão ela não consegue bloquear certos movimentos do jogador
 
     jogo = ia.jogo_copia.tabuleiro
     possibilidades_ia = 0
@@ -87,23 +88,23 @@ def cutoff(ia, contador, eh_min):
             elif n > 0 and temp.count(0) == 2:
                 possibilidades_jogador += 3
 
-    if possibilidades_jogador > 2.0*possibilidades_ia:
-        global quant
-        quant += 1
+    if possibilidades_jogador > 2*possibilidades_ia:    # Se as possibilidades do jogador for maior do que
+        # global quant                                  # o dobro das possibilidades da IA, cutoff é ativado,
+        # quant += 1                                    # caso contrário, a recursão continua no minimax
         return True
     else:
         return False
 
-# Retorna uma lista com os valores da diagonal de cima pra baixo (\)
-def diagonal_cima_baixo(jogo, i, j):
-    resp = []
+
+def diagonal_cima_baixo(jogo, i, j):    # Retorna uma lista com os valores da diagonal de cima pra baixo,
+    resp = []                           # a partir de um dado elemento
     for n in range(4):
         resp.append(jogo[i+n][j+n])
     return resp
 
-# Retorna uma lista com os valores da diagonal de baixo pra cima (/)
-def diagonal_baixo_cima(jogo, i, j):
-    resp = []
+
+def diagonal_baixo_cima(jogo, i, j):    # Retorna uma lista com os valores da diagonal de baixo pra cima,
+    resp = []                           # a partir de um dado elemento
     for n in range(4):
         resp.append(jogo[i-n][j+n])
     return resp
