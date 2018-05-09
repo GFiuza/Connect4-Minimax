@@ -29,23 +29,21 @@ def cutoff(ia, contador, eh_min):       # Função de cutoff. Ele avalia as poss
     possibilidades_ia = 0
     possibilidades_jogador = 0
 
-    # Linhas
-    for i in range(len(jogo)):
-        for j in range(0, len(jogo[i]) - 4):
-            n = min(jogo[i][j:j+4]) + max(jogo[i][j:j+4])
-            if n < 0 and jogo[i][j:j+4].count(0) == 1:
-                possibilidades_ia += 7
-            elif n > 0 and jogo[i][j:j+4].count(0) == 1:
+    for i in range(len(jogo)):                              # Em cada linha, extrai subvetores de quatro
+        for j in range(0, len(jogo[i]) - 4):                # posições e avalia se há uma ou mais peças
+            n = min(jogo[i][j:j+4]) + max(jogo[i][j:j+4])   # pertencentes somente à um jogador e avalia
+            if n < 0 and jogo[i][j:j+4].count(0) == 1:      # quantas peças há. Se tem duas peças, aumenta
+                possibilidades_ia += 7                      # a probabilidade da pessoa em 3. Se for três peças,
+            elif n > 0 and jogo[i][j:j+4].count(0) == 1:    # aumenta em 7.
                 possibilidades_jogador += 7
             elif n < 0 and jogo[i][j:j + 4].count(0) == 2:
                 possibilidades_ia += 3
             elif n > 0 and jogo[i][j:j + 4].count(0) == 2:
                 possibilidades_jogador += 3
 
-    # Colunas
-    for j in range(len(jogo[0])):
-        for i in range(0, len(jogo) - 4):
-
+    for j in range(len(jogo[0])):                           # Mesma coisa que a função de cima, mas agora com as
+        for i in range(0, len(jogo) - 4):                   # colunas. O algoritmo xtraisubcolunas, transformando-as
+                                                            # em um vetor de quatro posições.
             temp = []
             for k in range(i, i+4):
                 temp.append(jogo[k][j])
@@ -60,13 +58,12 @@ def cutoff(ia, contador, eh_min):       # Função de cutoff. Ele avalia as poss
             elif n > 0 and temp.count(0) == 2:
                 possibilidades_jogador += 3
 
-    # Diagonais cima pra baixo
-    for i in range(len(jogo) - 3):
-        for j in range(len(jogo[i]) - 3):
-            temp = diagonal_cima_baixo(jogo, i, j)
-            n = min(temp) + max(temp)
-            if n < 0 and temp.count(0) == 1:
-                possibilidades_ia += 7
+    for i in range(len(jogo) - 3):                          # Mesma coisa que as funções de cima, mas agora
+        for j in range(len(jogo[i]) - 3):                   # pegando as diagonais de cima para baixo, novamente
+            temp = diagonal_cima_baixo(jogo, i, j)          # transformando-as em um vetor de quatro posições
+            n = min(temp) + max(temp)                       # para ser mais fácil de trabalhar ocm os dados.
+            if n < 0 and temp.count(0) == 1:                # Para extrair a coluna e colocar em um vetor,
+                possibilidades_ia += 7                      # utiliza a função auxiliar diagonal_cima_baixo()
             elif n > 0 and temp.count(0) == 1:
                 possibilidades_jogador += 7
             elif n < 0 and temp.count(0) == 2:
@@ -74,11 +71,10 @@ def cutoff(ia, contador, eh_min):       # Função de cutoff. Ele avalia as poss
             elif n > 0 and temp.count(0) == 2:
                 possibilidades_jogador += 3
 
-    #Diagonal baixo pra cima
-    for i in range(3, len(jogo)):
-        for j in range(len(jogo[i]) - 3):
-            temp = diagonal_baixo_cima(jogo, i, j)
-            n = min(temp) + max(temp)
+    for i in range(3, len(jogo)):                           # Idêntico à função anterior, mas agora usando a função
+        for j in range(len(jogo[i]) - 3):                   # diagonal_baixo_cima() para extrair as diagonais de baixo
+            temp = diagonal_baixo_cima(jogo, i, j)          # pra cima. NOTA: quando falo de diagonal de baixo pra cima
+            n = min(temp) + max(temp)                       # e de cima pra baixo, me refiro da esquerda para a direita
             if n < 0 and temp.count(0) == 1:
                 possibilidades_ia += 7
             elif n > 0 and temp.count(0) == 1:
