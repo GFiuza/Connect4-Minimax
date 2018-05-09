@@ -12,7 +12,7 @@ class Int_Art:
             return pontuacao(self.jogo_copia.tabuleiro)     # Se alguém ganhou, ou se o tabuleiro está cheio,
         valor_no = float('-inf')                            # ou atingiu a profundidade, ou o cutoff retornou true,
         for i in range(7):                                  # o nó se torna folha. caso não seja folha, expande a
-            if self.jogo_copia.ondeLivre[i] == -1:          # árvore de recursão onde há jogadas e chama a fnção de
+            if self.jogo_copia.ondeLivre[i] == -1:          # árvore de recursão onde há jogadas e chama a função de
                 continue                                    # mínimo para os filhos, escolhendo o valor máximo
             self.jogo_copia.coloca_disco(i)                 # entre eles.
             valor_no = max(valor_no, self.mini_retorno(contador+1))
@@ -24,7 +24,7 @@ class Int_Art:
             return pontuacao(self.jogo_copia.tabuleiro)     # Mesmas condições para o nó se tornar folha que a
         valor_no = float('inf')                             # função anterior. Se for folha, retorna o valor do
         for i in range(7):                                  # tabuleiro. Senão, Expande a recursão para os filhos
-            if self.jogo_copia.ondeLivre[i] == -1:          # disponíveis, chjamando função de máximo para eles
+            if self.jogo_copia.ondeLivre[i] == -1:          # disponíveis, chamando função de máximo para eles
                 continue                                    # e seleciona o menor valor dentre todos os filhos.
             self.jogo_copia.coloca_disco(i)
             valor_no = min(valor_no, self.max_retorno(contador+1))
