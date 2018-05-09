@@ -1,27 +1,8 @@
 from avaliação import pontuacao
 
-# quant = 0
-# func = 0
-#
-#
-# def cutoff_quant():
-#     print("Quantidade de vezes que a função foi chamada =", func)
-#     print("Quantidade de cutoffs =", quant)
-#     print("Porcentagem =", quant/func)
-#
-#
-# def cutoff_quant_zera():
-#     global quant
-#     global func
-#     quant = 0
-#     func = 0
-#
-
 
 def cutoff(ia, contador, eh_min):       # Função de cutoff. Ele avalia as possíveis de 4 espaços no tabuleiro
-    # global func                       # e avalia se o jogador tem chance de colocar 4 peças naquele lugar
-    # func += 1
-
+                                        # e avalia se o jogador tem chance de colocar 4 peças naquele lugar
     if contador < 2:                    # A função só funciona para profundidades a partir de 2
         return False                    # senão ela não consegue bloquear certos movimentos do jogador
 
@@ -85,10 +66,8 @@ def cutoff(ia, contador, eh_min):       # Função de cutoff. Ele avalia as poss
                 possibilidades_jogador += 3
 
     if possibilidades_jogador > 2*possibilidades_ia:    # Se as possibilidades do jogador for maior do que
-        # global quant                                  # o dobro das possibilidades da IA, cutoff é ativado,
-        # quant += 1                                    # caso contrário, a recursão continua no minimax
-        return True
-    else:
+        return True                                     # o dobro das possibilidades da IA, cutoff é ativado,
+    else:                                               # caso contrário, a recursão continua no minimax
         return False
 
 
