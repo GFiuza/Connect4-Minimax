@@ -23,7 +23,7 @@ def cutoff(ia, contador, eh_min):       # Função de cutoff. Ele avalia as poss
                 possibilidades_jogador += 3
 
     for j in range(len(jogo[0])):                           # Mesma coisa que a função de cima, mas agora com as
-        for i in range(0, len(jogo) - 4):                   # colunas. O algoritmo xtraisubcolunas, transformando-as
+        for i in range(0, len(jogo) - 4):                   # colunas. O algoritmo extraisubcolunas, transformando-as
                                                             # em um vetor de quatro posições.
             temp = []
             for k in range(i, i+4):
